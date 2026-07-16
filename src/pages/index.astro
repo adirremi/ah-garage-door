@@ -1,0 +1,262 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { site, locations, reviews, faqs } from '../data/site';
+---
+
+<BaseLayout>
+  <Header />
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <p class="section-label">California's Trusted Experts</p>
+        <h1>Professional <span>Garage Door</span> Services You Can Count On</h1>
+        <p>Expert repair, installation, and maintenance across California. Fast response, fair pricing, and satisfaction guaranteed on every job.</p>
+        <div class="hero-buttons">
+          <a href={site.phoneHref} class="btn btn-gold">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.362 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            {site.phone}
+          </a>
+          <a href="#locations" class="btn btn-outline">Find Your Location</a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-stats">
+          <div class="stat-box">
+            <div class="stat-number">10K+</div>
+            <div class="stat-label">Satisfied Customers</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-number">10</div>
+            <div class="stat-label">CA Locations</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-number">24/7</div>
+            <div class="stat-label">Emergency Service</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST BAR -->
+  <div class="trust-bar">
+    <div class="container">
+      <div class="trust-items">
+        <div class="trust-item"><div class="trust-icon">&#9733;</div> Licensed &amp; Insured</div>
+        <div class="trust-item"><div class="trust-icon">&#10003;</div> A+ BBB Rating</div>
+        <div class="trust-item"><div class="trust-icon">&#9881;</div> All Makes &amp; Models</div>
+        <div class="trust-item"><div class="trust-icon">&#128274;</div> Certified Technicians</div>
+        <div class="trust-item"><div class="trust-icon">&#9201;</div> Same-Day Service</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <div class="container">
+      <div class="services-header">
+        <p class="section-label">Our Solutions</p>
+        <h2 class="section-title">Complete Garage Door Services</h2>
+        <p class="section-subtitle">From emergency repairs to full installations, we provide comprehensive garage door solutions for residential and commercial properties.</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#D4A853" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          </div>
+          <h3>Garage Door Installation</h3>
+          <p>Residential and commercial installations with a wide range of styles, materials, and smart-home compatible openers.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#D4A853" stroke-width="2"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
+          </div>
+          <h3>Garage Door Repair</h3>
+          <p>Expert fixes for broken springs, malfunctioning openers, off-track doors, damaged panels, and all mechanical issues.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#D4A853" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 01-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
+          </div>
+          <h3>Maintenance &amp; Tune-Ups</h3>
+          <p>Preventive maintenance programs to keep your door running smoothly, safely, and extend its lifespan for years.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#D4A853" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          </div>
+          <h3>Emergency 24/7 Service</h3>
+          <p>Locked out or door stuck? Our emergency team is available around the clock for urgent garage door situations.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#D4A853" stroke-width="2"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+          </div>
+          <h3>Commercial Services</h3>
+          <p>Heavy-duty commercial door solutions for warehouses, loading docks, storefronts, and industrial facilities.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#D4A853" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M3 15h18"/><path d="M12 3v18"/></svg>
+          </div>
+          <h3>Panel Replacement</h3>
+          <p>Damaged or dented panels? We replace individual panels to restore your door's appearance and functionality.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY CHOOSE US -->
+  <section class="why-us" id="why-us">
+    <div class="container">
+      <div class="why-grid">
+        <div class="why-text">
+          <p class="section-label">Why AH Garage Door</p>
+          <h2 class="section-title">Why We Stand Out as Your Garage Door Experts</h2>
+          <p class="desc">Our factory-trained technicians guarantee top-notch service on every call. We value long-term relationships and work to keep your garage door at peak performance, minimizing disruptions to your daily life.</p>
+          <a href={site.phoneHref} class="btn btn-gold">Get a Free Quote</a>
+        </div>
+        <div class="why-features">
+          <div class="why-feature">
+            <div class="why-feature-icon">&#127968;</div>
+            <h4>Locally Operated</h4>
+            <p>10 locations across California for fast local response.</p>
+          </div>
+          <div class="why-feature">
+            <div class="why-feature-icon">&#128338;</div>
+            <h4>Available 24/7</h4>
+            <p>Emergency services any time, day or night.</p>
+          </div>
+          <div class="why-feature">
+            <div class="why-feature-icon">&#9989;</div>
+            <h4>Fully Licensed</h4>
+            <p>Licensed, bonded, and insured for your protection.</p>
+          </div>
+          <div class="why-feature">
+            <div class="why-feature-icon">&#128176;</div>
+            <h4>Fair Pricing</h4>
+            <p>Transparent quotes with no hidden fees or surprises.</p>
+          </div>
+          <div class="why-feature">
+            <div class="why-feature-icon">&#128736;</div>
+            <h4>All Brands</h4>
+            <p>We repair and install all major garage door brands.</p>
+          </div>
+          <div class="why-feature">
+            <div class="why-feature-icon">&#127942;</div>
+            <h4>Satisfaction Guaranteed</h4>
+            <p>100% satisfaction guarantee on every service call.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="how-it-works">
+    <div class="container">
+      <div class="how-header">
+        <p class="section-label">Simple Process</p>
+        <h2 class="section-title">How It Works</h2>
+        <p class="section-subtitle">Getting your garage door fixed or replaced is easy with our streamlined 3-step process.</p>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <div class="step-number">1</div>
+          <h3>Schedule a Call</h3>
+          <p>Book online or call us — we'll match you with a local expert near your area.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">2</div>
+          <h3>Free Estimate</h3>
+          <p>Our technician assesses the issue and provides a transparent, no-obligation quote.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">3</div>
+          <h3>Get It Done</h3>
+          <p>Fast, quality work backed by our satisfaction guarantee and warranty.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section class="reviews" id="reviews">
+    <div class="container">
+      <div class="reviews-header">
+        <p class="section-label">Testimonials</p>
+        <h2 class="section-title">What Our Customers Say</h2>
+        <p class="section-subtitle">Trusted by thousands of homeowners across California.</p>
+      </div>
+      <div class="reviews-grid">
+        {reviews.map((review) => (
+          <div class="review-card">
+            <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <p>{review.text}</p>
+            <div class="review-author">
+              <div class="review-avatar">{review.initials}</div>
+              <div>
+                <div class="review-name">{review.name}</div>
+                <div class="review-source">{review.source}</div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- LOCATIONS -->
+  <section class="locations" id="locations">
+    <div class="container">
+      <div class="locations-header">
+        <p class="section-label">Service Areas</p>
+        <h2 class="section-title">Our California Locations</h2>
+        <p class="section-subtitle">With 10 locations across California, we're always nearby. Find the closest AH Garage Door office to you.</p>
+      </div>
+      <div class="locations-grid">
+        {locations.map((loc) => (
+          <div class="location-card">
+            <div class="location-pin">
+              <svg viewBox="0 0 24 24" fill="#C0392B" stroke="none"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/></svg>
+              <span class="location-city">{loc.city}</span>
+            </div>
+            <div class="location-address">{loc.address}</div>
+            <a href={site.phoneHref} class="location-phone">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+              {site.phone}
+            </a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq" id="faq">
+    <div class="container">
+      <div class="faq-grid">
+        <div>
+          <p class="section-label">Help Center</p>
+          <h2 class="section-title">Frequently Asked Questions</h2>
+          <p class="section-subtitle" style="margin-bottom:32px">We provide expert services for all types of garage doors. No matter the issue, we have a solution for you.</p>
+          <a href={site.phoneHref} class="btn btn-navy">Still have questions? Call us</a>
+        </div>
+        <div class="faq-list">
+          {faqs.map((faq, i) => (
+            <div class={`faq-item${i === 0 ? ' active' : ''}`}>
+              <div class="faq-question" onclick="toggleFaq(this)">{faq.q} <span class="faq-arrow">&#9662;</span></div>
+              <div class="faq-answer"><div class="faq-answer-inner">{faq.a}</div></div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</BaseLayout>
