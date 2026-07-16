@@ -1,12 +1,12 @@
 ---
-import { site } from '../data/site';
+import { site, businessHours } from '../data/site';
 ---
 
 <!-- TOP BAR -->
 <div class="topbar">
   <div class="container">
     <div class="topbar-left">
-      <span><span class="topbar-dot"></span> Available 24/7 for Emergency Service</span>
+      <span><span class="topbar-dot"></span> {businessHours.topbar}</span>
       <span>Serving All of California</span>
     </div>
     <a href={site.phoneHref}>{site.phone}</a>

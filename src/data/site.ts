@@ -6,7 +6,29 @@ export const site = {
   email: 'info@ahgaragedoor.com',
   url: 'https://ahgaragedoor.com',
   description:
-    'AH Garage Door provides expert garage door repair, installation & maintenance across California. 24/7 emergency service. Call (833) 314-1418.',
+    'AH Garage Door provides expert garage door repair, installation & maintenance across California. Open Mon–Thu & Sun 8AM–6PM, Fri 8AM–2PM. Call (833) 314-1418.',
+} as const;
+
+export const businessHours = {
+  topbar: 'Open Mon–Thu & Sun 8AM–6PM · Fri 8AM–2PM · Sat Closed',
+  short: 'Mon–Thu & Sun: 8AM–6PM · Fri: 8AM–2PM · Sat: Closed',
+  schema: [
+    'Mo 08:00-18:00',
+    'Tu 08:00-18:00',
+    'We 08:00-18:00',
+    'Th 08:00-18:00',
+    'Fr 08:00-14:00',
+    'Su 08:00-18:00',
+  ],
+  schedule: [
+    { day: 'Mon', hours: '8:00 AM – 6:00 PM' },
+    { day: 'Tue', hours: '8:00 AM – 6:00 PM' },
+    { day: 'Wed', hours: '8:00 AM – 6:00 PM' },
+    { day: 'Thu', hours: '8:00 AM – 6:00 PM' },
+    { day: 'Fri', hours: '8:00 AM – 2:00 PM' },
+    { day: 'Sat', hours: 'Closed' },
+    { day: 'Sun', hours: '8:00 AM – 6:00 PM' },
+  ],
 } as const;
 
 export const locations = [
@@ -72,7 +94,7 @@ export const faqs = [
   },
   {
     q: 'How quickly can you repair my garage door?',
-    a: 'Most repairs are completed within the same day. For emergencies, we offer 24/7 service and aim to arrive within 1-2 hours. More complex replacements or installations may take a few hours depending on the scope.',
+    a: 'Most repairs are completed within the same day during our business hours (Mon–Thu & Sun 8AM–6PM, Fri 8AM–2PM). Call us and we will schedule your service as quickly as possible. More complex replacements or installations may take a few hours depending on the scope.',
   },
   {
     q: 'What areas in California do you serve?',
@@ -115,7 +137,7 @@ export function locationSchema(loc: (typeof schemaLocations)[number]) {
       postalCode: loc.zip,
       addressCountry: 'US',
     },
-    openingHours: 'Mo-Su 00:00-23:59',
+    openingHours: businessHours.schema,
     priceRange: '$$',
     url: site.url,
   };

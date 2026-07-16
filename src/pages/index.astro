@@ -2,7 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import { site, locations, reviews, faqs } from '../data/site';
+import { site, locations, reviews, faqs, businessHours } from '../data/site';
 ---
 
 <BaseLayout>
@@ -34,8 +34,8 @@ import { site, locations, reviews, faqs } from '../data/site';
             <div class="stat-label">CA Locations</div>
           </div>
           <div class="stat-box">
-            <div class="stat-number">24/7</div>
-            <div class="stat-label">Emergency Service</div>
+            <div class="stat-number">6 Days</div>
+            <div class="stat-label">Open Weekly</div>
           </div>
         </div>
       </div>
@@ -89,8 +89,8 @@ import { site, locations, reviews, faqs } from '../data/site';
           <div class="service-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="#D4A853" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
           </div>
-          <h3>Emergency 24/7 Service</h3>
-          <p>Locked out or door stuck? Our emergency team is available around the clock for urgent garage door situations.</p>
+          <h3>Emergency Repair Service</h3>
+          <p>Locked out or door stuck? Call us during business hours for urgent garage door assistance.</p>
         </div>
         <div class="service-card">
           <div class="service-icon">
@@ -128,8 +128,8 @@ import { site, locations, reviews, faqs } from '../data/site';
           </div>
           <div class="why-feature">
             <div class="why-feature-icon">&#128338;</div>
-            <h4>Available 24/7</h4>
-            <p>Emergency services any time, day or night.</p>
+            <h4>Open 6 Days a Week</h4>
+            <p>{businessHours.short}</p>
           </div>
           <div class="why-feature">
             <div class="why-feature-icon">&#9989;</div>

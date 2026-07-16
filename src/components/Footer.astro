@@ -1,5 +1,5 @@
 ---
-import { site } from '../data/site';
+import { site, businessHours } from '../data/site';
 
 const year = new Date().getFullYear();
 ---
@@ -48,14 +48,14 @@ const year = new Date().getFullYear();
         <a href="#">Installation</a>
         <a href="#">Repair</a>
         <a href="#">Maintenance</a>
-        <a href="#">Emergency 24/7</a>
+        <a href="#">Emergency Repairs</a>
         <a href="#">Commercial</a>
       </div>
       <div class="footer-col">
         <h4>Contact</h4>
         <a href={site.phoneHref}>{site.phone}</a>
         <a href={`mailto:${site.email}`}>{site.email}</a>
-        <a href="#">Available 24/7</a>
+        <span style="display:block;font-size:14px;padding:4px 0;line-height:1.6;">{businessHours.short}</span>
       </div>
     </div>
     <div class="footer-bottom">
