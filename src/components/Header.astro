@@ -1,5 +1,8 @@
 ---
 import { site, businessHours } from '../data/site';
+
+const path = Astro.url.pathname;
+const isHome = path === '/';
 ---
 
 <!-- TOP BAR -->
@@ -26,11 +29,10 @@ import { site, businessHours } from '../data/site';
       </div>
     </a>
     <nav class="main-nav">
-      <a href="#services">Services</a>
-      <a href="#why-us">Why Us</a>
-      <a href="#locations">Locations</a>
-      <a href="#reviews">Reviews</a>
-      <a href="#faq">FAQ</a>
+      <a href={isHome ? '#services' : '/#services'}>Services</a>
+      <a href={isHome ? '#why-us' : '/#why-us'}>Why Us</a>
+      <a href="/locations">Locations</a>
+      <a href={isHome ? '#faq' : '/#faq'}>FAQ</a>
       <a href={site.phoneHref} class="nav-cta">Call Now</a>
     </nav>
     <button class="mobile-toggle" id="mobile-toggle" aria-label="Menu">

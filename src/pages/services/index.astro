@@ -1,0 +1,39 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { site, services } from '../../data/site';
+
+const title = `Garage Door Services | ${site.name}`;
+const description =
+  'Explore AH Garage Door services: installation, repair, maintenance, emergency repair, commercial doors, and panel replacement across California.';
+const canonical = `${site.url}/services`;
+---
+
+<BaseLayout title={title} description={description} canonical={canonical}>
+  <Header />
+
+  <section class="page-hero">
+    <div class="container">
+      <p class="section-label">Our Solutions</p>
+      <h1>Garage Door Services</h1>
+      <p>Professional installation, repair, and maintenance for homes and businesses across California. Choose a service to learn more.</p>
+    </div>
+  </section>
+
+  <section class="services page-section">
+    <div class="container">
+      <div class="services-grid">
+        {services.map((service) => (
+          <a href={`/services/${service.slug}`} class="service-card service-card-link">
+            <h3>{service.title}</h3>
+            <p>{service.summary}</p>
+            <span class="card-link">Learn more →</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</BaseLayout>

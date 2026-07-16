@@ -1,5 +1,5 @@
 ---
-import { site, businessHours } from '../data/site';
+import { site, businessHours, services, locations } from '../data/site';
 
 const year = new Date().getFullYear();
 ---
@@ -15,7 +15,7 @@ const year = new Date().getFullYear();
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.362 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
         Call {site.phone}
       </a>
-      <a href="#locations" class="btn btn-outline">Find a Location</a>
+      <a href="/locations" class="btn btn-outline">Find a Location</a>
     </div>
   </div>
 </section>
@@ -38,24 +38,23 @@ const year = new Date().getFullYear();
       </div>
       <div class="footer-col">
         <h4>Company</h4>
-        <a href="#services">Our Services</a>
-        <a href="#why-us">Why Choose Us</a>
-        <a href="#locations">Service Areas</a>
-        <a href="#reviews">Reviews</a>
+        <a href="/#services">Our Services</a>
+        <a href="/#why-us">Why Choose Us</a>
+        <a href="/locations">Service Areas</a>
+        <a href="/#faq">FAQ</a>
       </div>
       <div class="footer-col">
         <h4>Services</h4>
-        <a href="#">Installation</a>
-        <a href="#">Repair</a>
-        <a href="#">Maintenance</a>
-        <a href="#">Emergency Repairs</a>
-        <a href="#">Commercial</a>
+        {services.map((service) => (
+          <a href={`/services/${service.slug}`}>{service.shortTitle}</a>
+        ))}
       </div>
       <div class="footer-col">
         <h4>Contact</h4>
         <a href={site.phoneHref}>{site.phone}</a>
         <a href={`mailto:${site.email}`}>{site.email}</a>
         <span style="display:block;font-size:14px;padding:4px 0;line-height:1.6;">{businessHours.short}</span>
+        <a href={locations[0].href}>Start with {locations[0].city}</a>
       </div>
     </div>
     <div class="footer-bottom">

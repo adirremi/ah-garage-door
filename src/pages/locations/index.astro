@@ -1,0 +1,43 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { site, locations } from '../../data/site';
+
+const title = `Service Areas & Locations | ${site.name}`;
+const description =
+  'Find AH Garage Door near you. We serve 10 California locations including Palo Alto, Irvine, Beverly Hills, Oakland, La Jolla, and more.';
+const canonical = `${site.url}/locations`;
+---
+
+<BaseLayout title={title} description={description} canonical={canonical}>
+  <Header />
+
+  <section class="page-hero">
+    <div class="container">
+      <p class="section-label">Service Areas</p>
+      <h1>Our California Locations</h1>
+      <p>Local garage door repair, installation, and maintenance across 10 California markets. Choose your city for local details and service options.</p>
+    </div>
+  </section>
+
+  <section class="locations page-section">
+    <div class="container">
+      <div class="locations-grid">
+        {locations.map((loc) => (
+          <a href={loc.href} class="location-card location-card-link">
+            <div class="location-pin">
+              <svg viewBox="0 0 24 24" fill="#C0392B" stroke="none"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/></svg>
+              <span class="location-city">{loc.city}</span>
+            </div>
+            <div class="location-address">{loc.address}</div>
+            <p class="location-region">{loc.region}</p>
+            <span class="card-link">View location →</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</BaseLayout>

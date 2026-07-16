@@ -1,0 +1,127 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import {
+  site,
+  locations,
+  services,
+  businessHours,
+  getLocation,
+  locationSchema,
+} from '../../data/site';
+
+export function getStaticPaths() {
+  return locations.map((loc) => ({
+    params: { slug: loc.slug },
+  }));
+}
+
+const { slug } = Astro.params;
+const location = getLocation(slug!)!;
+const otherLocations = locations.filter((loc) => loc.slug !== location.slug).slice(0, 6);
+const title = `Garage Door Repair & Installation in ${location.city}, CA | ${site.name}`;
+const description = `${location.blurb} Call ${site.phone} for a free estimate.`;
+const canonical = `${site.url}${location.href}`;
+const schema = locationSchema(location, canonical);
+---
+
+<BaseLayout title={title} description={description} canonical={canonical} schema={schema}>
+  <Header />
+
+  <section class="page-hero">
+    <div class="container">
+      <p class="section-label">{location.region}</p>
+      <h1>Garage Door Services in <span>{location.city}</span></h1>
+      <p>{location.blurb}</p>
+      <div class="hero-buttons" style="margin-top:28px">
+        <a href={site.phoneHref} class="btn btn-gold">Call {site.phone}</a>
+        <a href="/#services" class="btn btn-outline">Browse Services</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="page-section">
+    <div class="container page-split">
+      <div>
+        <p class="section-label">Local Office</p>
+        <h2 class="section-title">AH Garage Door — {location.city}</h2>
+        <p class="page-lead">We serve {location.city} and nearby communities with licensed technicians, free estimates, and clear pricing.</p>
+
+        <div class="info-list">
+          <div class="info-item">
+            <strong>Address</strong>
+            <span>{location.address}</span>
+          </div>
+          <div class="info-item">
+            <strong>Phone</strong>
+            <a href={site.phoneHref}>{site.phone}</a>
+          </div>
+          <div class="info-item">
+            <strong>Hours</strong>
+            <span>{businessHours.short}</span>
+          </div>
+        </div>
+
+        <h3 class="subhead">Nearby Areas We Serve</h3>
+        <div class="tag-list">
+          {location.areas.map((area) => (
+            <span class="tag">{area}</span>
+          ))}
+        </div>
+      </div>
+
+      <aside class="side-card">
+        <h3>Need service in {location.city}?</h3>
+        <p>Call for a free on-site estimate. Most common repairs can be completed the same day during business hours.</p>
+        <a href={site.phoneHref} class="btn btn-gold" style="width:100%;justify-content:center">Call Now</a>
+        <a href={`mailto:${site.email}`} class="btn btn-navy" style="width:100%;justify-content:center;margin-top:12px">Email Us</a>
+      </aside>
+    </div>
+  </section>
+
+  <section class="page-section alt">
+    <div class="container">
+      <div class="services-header">
+        <p class="section-label">Services in {location.city}</p>
+        <h2 class="section-title">What We Can Help With</h2>
+        <p class="section-subtitle">From spring repairs to full installations, our {location.city} team covers residential and commercial garage door needs.</p>
+      </div>
+      <div class="services-grid">
+        {services.map((service) => (
+          <a href={`/services/${service.slug}`} class="service-card service-card-link">
+            <h3>{service.title}</h3>
+            <p>{service.summary}</p>
+            <span class="card-link">Learn more →</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="page-section">
+    <div class="container">
+      <div class="services-header">
+        <p class="section-label">More Locations</p>
+        <h2 class="section-title">Other California Offices</h2>
+      </div>
+      <div class="locations-grid">
+        {otherLocations.map((loc) => (
+          <a href={loc.href} class="location-card location-card-link">
+            <div class="location-pin">
+              <svg viewBox="0 0 24 24" fill="#C0392B" stroke="none"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/></svg>
+              <span class="location-city">{loc.city}</span>
+            </div>
+            <div class="location-address">{loc.address}</div>
+            <span class="card-link">View location →</span>
+          </a>
+        ))}
+      </div>
+      <div style="text-align:center;margin-top:32px">
+        <a href="/locations" class="btn btn-navy">View All Locations</a>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</BaseLayout>

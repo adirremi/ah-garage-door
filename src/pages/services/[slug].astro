@@ -1,0 +1,115 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import {
+  site,
+  services,
+  locations,
+  getService,
+  serviceSchema,
+} from '../../data/site';
+
+export function getStaticPaths() {
+  return services.map((service) => ({
+    params: { slug: service.slug },
+  }));
+}
+
+const { slug } = Astro.params;
+const service = getService(slug!)!;
+const otherServices = services.filter((item) => item.slug !== service.slug);
+const title = `${service.title} in California | ${site.name}`;
+const description = service.summary;
+const canonical = `${site.url}/services/${service.slug}`;
+const schema = serviceSchema(service, canonical);
+---
+
+<BaseLayout title={title} description={description} canonical={canonical} schema={schema}>
+  <Header />
+
+  <section class="page-hero">
+    <div class="container">
+      <p class="section-label">Service</p>
+      <h1>{service.headline}</h1>
+      <p>{service.description}</p>
+      <div class="hero-buttons" style="margin-top:28px">
+        <a href={site.phoneHref} class="btn btn-gold">Call {site.phone}</a>
+        <a href="/locations" class="btn btn-outline">Find a Location</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="page-section">
+    <div class="container page-split">
+      <div>
+        <p class="section-label">Why This Service</p>
+        <h2 class="section-title">{service.title}</h2>
+        <p class="page-lead">{service.summary}</p>
+
+        <h3 class="subhead">What You Get</h3>
+        <ul class="check-list">
+          {service.benefits.map((item) => (
+            <li>{item}</li>
+          ))}
+        </ul>
+
+        <h3 class="subhead">What's Included</h3>
+        <ul class="check-list">
+          {service.includes.map((item) => (
+            <li>{item}</li>
+          ))}
+        </ul>
+      </div>
+
+      <aside class="side-card">
+        <h3>Free Estimate</h3>
+        <p>Tell us what you need and we’ll match you with a local technician. Transparent pricing — no surprises.</p>
+        <a href={site.phoneHref} class="btn btn-gold" style="width:100%;justify-content:center">Call Now</a>
+        <a href="/locations" class="btn btn-navy" style="width:100%;justify-content:center;margin-top:12px">Choose Location</a>
+      </aside>
+    </div>
+  </section>
+
+  <section class="page-section alt">
+    <div class="container">
+      <div class="services-header">
+        <p class="section-label">Available Statewide</p>
+        <h2 class="section-title">{service.shortTitle} Near You</h2>
+        <p class="section-subtitle">We offer {service.title.toLowerCase()} from every AH Garage Door location across California.</p>
+      </div>
+      <div class="locations-grid">
+        {locations.map((loc) => (
+          <a href={loc.href} class="location-card location-card-link">
+            <div class="location-pin">
+              <svg viewBox="0 0 24 24" fill="#C0392B" stroke="none"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/></svg>
+              <span class="location-city">{loc.city}</span>
+            </div>
+            <div class="location-address">{loc.address}</div>
+            <span class="card-link">View location →</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="page-section">
+    <div class="container">
+      <div class="services-header">
+        <p class="section-label">More Services</p>
+        <h2 class="section-title">Related Garage Door Solutions</h2>
+      </div>
+      <div class="services-grid">
+        {otherServices.map((item) => (
+          <a href={`/services/${item.slug}`} class="service-card service-card-link">
+            <h3>{item.title}</h3>
+            <p>{item.summary}</p>
+            <span class="card-link">Learn more →</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</BaseLayout>
